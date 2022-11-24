@@ -209,7 +209,7 @@ const KsyHat = require('node-ksy-hat');
 上記コードから `KsyHat` コンストラクタが得られます。その後、次のように、`KsyHat` コンストラクタから `KsyHat` オブジェクトを生成しなければいけません：
 
 ```JavaScript
-const KsyHat = new KsyHat();
+const ksyhat = new KsyHat();
 ```
 
 ここで得られた `KsyHat` オブジェクトのメソッドやプロパティを通して HAT にアクセスします。
@@ -220,7 +220,7 @@ const KsyHat = new KsyHat();
 
 ```JavaScript
 (async () => {
-  await KsyHat.init();
+  await ksyhat.init();
   ...
 })();
 ```
@@ -234,7 +234,7 @@ const KsyHat = new KsyHat();
 `readSensorData()` メソッドは、HAT 内蔵の各種 I2C ベースのセンサから計測値を読み取ります。このメソッドは `Promise` オブジェクトを返します。このメソッドに引数はありません。
 
 ```JavaScript
-const res = await KsyHat.readSensorData();
+const res = await ksyhat.readSensorData();
 ```
 
 読み取りに成功すると、次のプロパティを含んだオブジェクトが返されます。
@@ -272,7 +272,7 @@ HAT の I2C ベースのセンサは 1 秒未満で繰り返し読み取りを�
 HAT の利用が終了したら、必ずこのメソッドを呼び出してください。
 
 ```javascript
-await KsyHat.destroy();
+await ksyhat.destroy();
 ```
 
 ### <a id="KsyHat-wait-method">wait() メソッド</a>
@@ -282,7 +282,7 @@ await KsyHat.destroy();
 このメソッドは HAT に対して何もしません。これは単なるユーティリティメソッドです。
 
 ```javascript
-await KsyHat.wait(1000);
+await ksyhat.wait(1000);
 ```
 
 ### <a id="KsyHat-properties">プロパティ</a>
@@ -320,7 +320,7 @@ await KsyHat.wait(1000);
 次のコードは、赤色 LED のみを点灯します。
 
 ```javascript
-await KsyHat.led.setStates({ r: true });
+await ksyhat.led.setStates({ r: true });
 ```
 
 ---------------------------------------
@@ -341,7 +341,7 @@ No.       | 型      | 必須 |説明
 次のコードは赤外線を発光します。
 
 ```javascript
-await KsyHat.irtx.setState(true);
+await ksyhat.irtx.setState(true);
 ```
 
 ---------------------------------------
@@ -357,7 +357,7 @@ await KsyHat.irtx.setState(true);
 
 ```javascript
 // KsyHatSwitch オブジェクトの pressed イベントのリスナーをセット
-KsyHat.switch.on('pressed', (state) => {
+ksyhat.switch.on('pressed', (state) => {
   if (state === true) {
     console.log('Pressed');
   } else {
@@ -366,13 +366,13 @@ KsyHat.switch.on('pressed', (state) => {
 });
 
 // タクトスイッチのモニタリングを開始
-KsyHat.switch.start();
+ksyhat.switch.start();
 
 // 10 秒間待つ
-await KsyHat.wait(10000);
+await ksyhat.wait(10000);
 
 // タクトスイッチのモニタリングを終了
-KsyHat.switch.stop();
+ksyhat.switch.stop();
 ```
 
 ### <a id="KsyHatSwitch-stop-method">stop() メソッド</a>
@@ -402,18 +402,18 @@ KsyHat.switch.stop();
 
 ```javascript
 // KsyHatMotion オブジェクトの detected イベントのリスナーをセット
-KsyHat.motion.on('detected', (data) => {
+ksyhat.motion.on('detected', (data) => {
   console.log(data);
 });
 
 // 焦電センサの反応のモニタリングを開始
-KsyHat.motion.start();
+ksyhat.motion.start();
 
 // 10 秒間待つ
-await KsyHat.wait(10000);
+await ksyhat.wait(10000);
 
 // 焦電センサの反応のモニタリングを終了
-KsyHat.motion.stop();
+ksyhat.motion.stop();
 ```
 
 焦電センサが動きを検知すると、次のような結果が連続して出力されます。
@@ -464,7 +464,7 @@ KsyHat.motion.stop();
 `humidity`    | Number | 湿度 (%RH)
 
 ```javascript
-const res = await KsyHat.sht3x.read();
+const res = await ksyhat.sht3x.read();
 console.log(res);
 ```
 
@@ -493,7 +493,7 @@ HAT の I2C ベースのセンサは 1 秒未満で繰り返し読み取りを�
 
 
 ```javascript
-const res = await KsyHat.veml7700.read();
+const res = await ksyhat.veml7700.read();
 console.log(res);
 ```
 
@@ -523,7 +523,7 @@ HAT の I2C ベースのセンサは 1 秒未満で繰り返し読み取りを�
 `temperature` | Number | 温度 (degC)
 
 ```javascript
-const res = await KsyHat.omron2smpd.read();
+const res = await ksyhat.omron2smpd.read();
 console.log(res);
 ```
 
