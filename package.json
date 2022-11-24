@@ -1,6 +1,6 @@
 {
   "name": "node-ksy-hat",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "node-ksy-hat は KSY 社の Raspberry Pi 向けマルチセンサー HAT「Smart Remote Control HAT」を制御および計測値を取得するモジュールです。",
   "main": "./lib/ksy-hat.js",
   "files": [
