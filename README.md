@@ -82,7 +82,7 @@ $ npm install node-ksy-hat
 
 ```JavaScript
 // node-ksy-hat をロードし、KsyHat コンストラクタオブジェクトを取得
-const KsyHat = require('../lib/ksy-hat.js');
+const KsyHat = require('node-ksy-hat');
 
 // KsyHat オブジェクトを生成
 const ksyhat = new KsyHat();
@@ -124,7 +124,7 @@ HAT の利用が終了したら、必ず [`KsyHat`](#KsyHat-object) オブジェ
 次のサンプルコードは、HAT に内蔵のマルチカラー LED を 1 秒ごとに赤、緑、青の順に点灯し続けます。
 
 ```JavaScript
-const KsyHat = require('../lib/ksy-hat.js');
+const KsyHat = require('node-ksy-hat');
 const ksyhat = new KsyHat();
 
 (async () => {
@@ -155,7 +155,7 @@ const ksyhat = new KsyHat();
 次のサンプルコードは、HAT 内蔵のタクトスイッチの押下を検知して、その状態を出力します。このサンプルコードでは、押下のモニタリングを 10　秒で終了します。
 
 ```JavaScript
-const KsyHat = require('../lib/ksy-hat.js');
+const KsyHat = require('node-ksy-hat');
 const ksyhat = new KsyHat();
 
 (async () => {
