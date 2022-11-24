@@ -82,21 +82,21 @@ $ npm install node-ksy-hat
 
 ```JavaScript
 // node-ksy-hat をロードし、KsyHat コンストラクタオブジェクトを取得
-const KsyHat = require('node-ksy-hat');
+const KsyHat = require('../lib/ksy-hat.js');
 
 // KsyHat オブジェクトを生成
-const KsyHat = new KsyHat();
+const ksyhat = new KsyHat();
 
 (async () => {
   // KsyHat オブジェクトを初期化
-  await KsyHat.init();
+  await ksyhat.init();
 
   // センサ計測値を読み取り出力
-  const res = await KsyHat.readSensorData();
+  const res = await ksyhat.readSensorData();
   console.log(res);
 
   // KsyHat オブジェクトの終了処理
-  await KsyHat.destroy();
+  await ksyhat.destroy();
 })();
 ```
 
@@ -124,24 +124,24 @@ HAT の利用が終了したら、必ず [`KsyHat`](#KsyHat-object) オブジェ
 次のサンプルコードは、HAT に内蔵のマルチカラー LED を 1 秒ごとに赤、緑、青の順に点灯し続けます。
 
 ```JavaScript
-const KsyHat = require('node-ksy-hat');
-const KsyHat = new KsyHat();
+const KsyHat = require('../lib/ksy-hat.js');
+const ksyhat = new KsyHat();
 
 (async () => {
-  await KsyHat.init();
+  await ksyhat.init();
 
   while (true) {
     // 赤点灯
-    await KsyHat.led.setStates({ r: true, g: false, b: false });
-    await KsyHat.wait(1000);
+    await ksyhat.led.setStates({ r: true, g: false, b: false });
+    await ksyhat.wait(1000);
 
     // 緑点灯
-    await KsyHat.led.setStates({ r: false, g: true, b: false });
-    await KsyHat.wait(1000);
+    await ksyhat.led.setStates({ r: false, g: true, b: false });
+    await ksyhat.wait(1000);
 
     // 青点灯
-    await KsyHat.led.setStates({ r: false, g: false, b: true });
-    await KsyHat.wait(1000);
+    await ksyhat.led.setStates({ r: false, g: false, b: true });
+    await ksyhat.wait(1000);
   }
 })();
 ```
@@ -155,14 +155,14 @@ const KsyHat = new KsyHat();
 次のサンプルコードは、HAT 内蔵のタクトスイッチの押下を検知して、その状態を出力します。このサンプルコードでは、押下のモニタリングを 10　秒で終了します。
 
 ```JavaScript
-const KsyHat = require('node-ksy-hat');
-const KsyHat = new KsyHat();
+const KsyHat = require('../lib/ksy-hat.js');
+const ksyhat = new KsyHat();
 
 (async () => {
-  await KsyHat.init();
+  await ksyhat.init();
 
   // KsyHatSwitch オブジェクトの pressed イベントのリスナーをセット
-  KsyHat.switch.on('pressed', (state) => {
+  ksyhat.switch.on('pressed', (state) => {
     if (state === true) {
       console.log('タクトスイッチが押されました。');
     } else {
@@ -171,18 +171,18 @@ const KsyHat = new KsyHat();
   });
 
   // タクトスイッチのモニタリングを開始
-  KsyHat.switch.start();
+  ksyhat.switch.start();
   console.log('タクトスイッチのモニタリングを開始しました。');
 
   // 10 秒間待つ
-  await KsyHat.wait(10000);
+  await ksyhat.wait(10000);
 
   // タクトスイッチのモニタリングを終了
-  KsyHat.switch.stop();
+  ksyhat.switch.stop();
   console.log('タクトスイッチのモニタリングを終了しました。');
 
   // KsyHat オブジェクトの終了処理
-  await KsyHat.destroy();
+  await ksyhat.destroy();
 })();
 ```
 
